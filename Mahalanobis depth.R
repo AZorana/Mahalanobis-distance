@@ -4,6 +4,8 @@ library(matlib)
 library(stats)
 library(dplyr)
 library(ggplot2)
+library(plotly)
+library(plot3D)
 set.seed(12345)
 
 
@@ -42,8 +44,16 @@ MD_point = d1 %>% filter((X1==d1[1,1] & X2==d1[1,2]))
 # Iskljucujemo eksponencijalni zapis poput 1e+06
 options(scipen=999) 
 #data("d1", package = "ggplot2")
-ggplot(data.frame(data), aes(x = X1, y = X2))+geom_point(col="brown", size=3) +
+g=ggplot(data.frame(data), aes(x = X1, y = X2))+geom_point(col="brown", size=3) +
   geom_point(data = MD_point, color='yellow', size=5) +
-  ggtitle("Махаланобисова дубина") +
+  ggtitle("Mahalanobisova dubina") +
   theme(plot.title = element_text(hjust = 0.5))+
-  xlab("X-коодината") + ylab("Y-координата")
+  xlab("X-koordinata") + ylab("Y-koordinata")
+g
+ggplotly(g, tooltip = c("text", "size"))
+#3D plot
+library(rgl)
+d1$color=c('yellow',rep('brown', length(d1[,1])-1))
+plot3d(d1[,1],d1[,2],d1[,3], type = 's', radius = .09, col=d1$color , 
+       xlab="X koordinata", ylab="Y koordinata", zlab="Mahalanobisova dubina")
+
