@@ -1,6 +1,7 @@
 library(GSVD)
 library(ours)
 set.seed(12345)
+# Baza se nalazi na adresi https://github.com/derekbeaton/OuRS/tree/master/OuRS/data
 snps=SNPS
 
 
