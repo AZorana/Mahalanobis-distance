@@ -40,16 +40,7 @@ razlika_robusnog_nerobusnog_MD = function(data, alpha){
 (r_0.75 = razlika_robusnog_nerobusnog_MD(lymph, 0.75))
 
 
-(r_0.8 = razlika_robusnog_nerobusnog_MD(lymph, 0.8))
-
-
 (r_0.9 = razlika_robusnog_nerobusnog_MD(lymph, 0.9))
 
-
-library(klaR)
-(cl <- kmodes(lymph, 2))
-
-## and visualize with some jitter:
-plot(jitter(x), col = cl$cluster)
 
 
